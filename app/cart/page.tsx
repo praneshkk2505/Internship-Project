@@ -176,9 +176,10 @@ export default function CartPage() {
                 Proceed to Checkout (₹{getTotal()})
               </button>
             </div>
-            <Navbar />
+            
           </>
         )}
+        <Navbar/>
       </main>
     </div>
   );
