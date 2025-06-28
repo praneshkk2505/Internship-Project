@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Minus, Plus, Trash2, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import Navbar from '../components/Navbar';
 
 // This would ideally come from a shared types file
 interface Product {
@@ -175,6 +176,7 @@ export default function CartPage() {
                 Proceed to Checkout (₹{getTotal()})
               </button>
             </div>
+            <Navbar />
           </>
         )}
       </main>

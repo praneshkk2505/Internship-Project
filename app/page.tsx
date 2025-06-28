@@ -7,6 +7,7 @@ import { ShoppingCart, Plus, Sparkles, Star, ChevronRight } from 'lucide-react';
 import Navigation from './components/Navigation';
 import { motion } from 'framer-motion';
 
+
 // Move products to a separate file or keep it here
 const allProducts = [
   {
@@ -194,22 +195,18 @@ export default function Home() {
   return (
     <main className="min-h-screen pb-32 bg-gradient-to-b from-purple-50 to-pink-50">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-pink-500 text-white py-16">
-        <div className="absolute inset-0 opacity-10">
+      <div className="relative rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 text-white py-16">
+        <div className="absolute inset-0 rounded-xl opacity-10">
           <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center"></div>
         </div>
         
         {/* Top Title */}
-        <div className="container mx-auto px-4 text-center mb-8">
-          <h1 className="text-5xl md:text-6xl font-extrabold leading-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-amber-400">Chrunchy Tamizhan</span>
-          </h1>
-        </div>
+        
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto gap-8">
+        <div className="container mx-auto px-4 relative z-10 mt-6">
+          <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto gap-5">
             <div className="md:w-1/2 text-center md:text-left">
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+              <h2 className="mt-10 text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
                 Discover Amazing <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 to-pink-300">Products</span>
               </h2>
             
@@ -228,7 +225,6 @@ export default function Home() {
                 </button>
               </div>
             </div>
-            {/* This closing div was missing */}
             <div className="md:w-1/2">
               {/* Add any image or content for the right side here */}
             </div>
@@ -238,11 +234,12 @@ export default function Home() {
 
       {/* Featured Products */}
       <div id="featured-products" className="container mx-auto px-4 py-16">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
+        <div className=" flex-col sm:flex-row justify-between items-start sm:items-center mb-10 ">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900">Shop by Category</h2>
-            <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-pink-500 mt-2 rounded-full"></div>
+            <h2 className="text-center text-3xl font-bold text-gray-900">Shop by Category</h2>
+            {/* <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-pink-500 mt- rounded-full"></div> */}
           </div>
+          <div className=" justify-center flex flex-row space-x-2">
           {categories.map((category) => (
               <button
                 key={category}
@@ -256,6 +253,7 @@ export default function Home() {
               {category}
               </button>
             ))}
+            </div>
           {filteredProducts.length > 4 && (
             <button 
               onClick={handleViewAll}

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Search, X, Plus } from 'lucide-react';
+import Navbar from '../components/Navbar';
 
 // Sample product data - in a real app, this would come from an API
 const allProducts = [
@@ -168,6 +169,7 @@ export default function SearchPage() {
           </div>
         )}
       </main>
+      <Navbar />
     </div>
   );
 }

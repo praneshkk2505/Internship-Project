@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
 import AuthStats from '../components/AuthStats';
+import Navbar from '../components/Navbar';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -96,6 +97,7 @@ export default function ProfilePage() {
 
         {/* Authentication Statistics */}
         <AuthStats />
+        <Navbar />
       </main>
     </div>
   );
