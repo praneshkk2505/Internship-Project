@@ -8,7 +8,6 @@ import Navbar from './Navbar';
 
 export default function Navigation() {
   const pathname = usePathname();
-  const router = useRouter();
   // const { logout } = useAuth();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const profileRef = useRef<HTMLDivElement>(null);
