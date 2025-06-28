@@ -3,7 +3,6 @@ import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Home, Search, ShoppingCart, User, ChevronDown, LogOut } from 'lucide-react';
 import { useState, useRef, useCallback } from 'react';
-import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { useAuth } from '../../contexts/AuthContext';
 

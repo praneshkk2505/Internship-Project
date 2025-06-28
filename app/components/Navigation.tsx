@@ -1,27 +1,23 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { Home, ShoppingCart, Search, User, LogOut, LogIn, ChevronDown, Sparkles } from 'lucide-react';
-import Link from 'next/link';
 import React, { useState, useEffect, useRef } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
-import toast from 'react-hot-toast';
+// import { useAuth } from '../../contexts/AuthContext';
+// import toast from 'react-hot-toast';
 import Navbar from './Navbar';
 
 export default function Navigation() {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, isAuthenticated, logout, isLoading } = useAuth();
+  // const { logout } = useAuth();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const profileRef = useRef<HTMLDivElement>(null);
 
-  const handleLogout = () => {
-    logout();
-    toast.success('Successfully logged out');
-    router.push('/auth/login');
-  };
-
-  const isActive = (path: string) => pathname === path;
+  // const handleLogout = () => {
+  //   logout();
+  //   toast.success('Successfully logged out');
+  //   router.push('/auth/login');
+  // };
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -60,6 +56,7 @@ export default function Navigation() {
   return (
     <>
       <TopAuthBar />
+      
       <Navbar />
     </>
   );

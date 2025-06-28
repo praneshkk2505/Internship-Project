@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { User, Lock, Mail, Eye, EyeOff, Loader2, Phone, MapPin, CheckCircle } from 'lucide-react';
+import { User, Lock, Mail, Eye, EyeOff, Loader2, Phone, MapPin} from 'lucide-react';
 import Link from 'next/link';
 import { useAuth } from '../../../contexts/AuthContext';
 import toast from 'react-hot-toast';

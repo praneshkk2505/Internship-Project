@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { ShoppingCart, Plus, Sparkles, Star, ChevronRight } from 'lucide-react';
+import { ShoppingCart, Sparkles, Star, ChevronRight } from 'lucide-react';
 import Navigation from './components/Navigation';
 import { motion } from 'framer-motion';
 
@@ -142,30 +142,9 @@ const useCart = () => {
     getCartTotal
   };
 };
-const FloatingParticles = () => {
-  return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden">
-      {[...Array(6)].map((_, i) => (
-        <div
-          key={i}
-          className="absolute animate-bounce opacity-20"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animationDelay: `${i * 0.5}s`,
-            animationDuration: `${3 + Math.random() * 2}s`
-          }}
-        >
-          <Sparkles className="text-amber-400" size={16} />
-        </div>
-      ))}
-    </div>
-  );
-};
-
 
 export default function Home() {
-  const { cart, addToCart } = useCart();
+  const { addToCart } = useCart();
   const [isHovered, setIsHovered] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [showAllProducts, setShowAllProducts] = useState(false);
@@ -193,7 +172,24 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen pb-32 bg-gradient-to-b from-purple-50 to-pink-50">
+    <>
+      <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute animate-bounce opacity-20"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${3 + Math.random() * 2}s`
+            }}
+          >
+            <Sparkles className="text-amber-400" size={16} />
+          </div>
+        ))}
+      </div>
+      <main className="min-h-screen pb-32 bg-gradient-to-b from-purple-50 to-pink-50">
       {/* Hero Section */}
       <div className="relative rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 text-white py-16">
         <div className="absolute inset-0 rounded-xl opacity-10">
@@ -339,5 +335,6 @@ export default function Home() {
 
       <Navigation />
     </main>
+    </>
   );
 }

@@ -43,7 +43,7 @@ const allProducts = [
 
 export default function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [cart, setCart] = useState<typeof allProducts>([]);
+  const [, setCart] = useState<typeof allProducts>([]);
 
   // Filter products based on search query
   const filteredProducts = allProducts.filter(product =>
@@ -60,10 +60,6 @@ export default function SearchPage() {
       }
       return [...prevCart, product];
     });
-  };
-
-  const removeFromCart = (productId: number) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== productId));
   };
 
   return (
@@ -96,7 +92,7 @@ export default function SearchPage() {
         {searchQuery ? (
           <div>
             <h2 className="text-lg font-medium mb-4">
-              {filteredProducts.length} {filteredProducts.length === 1 ? 'result' : 'results'} for "{searchQuery}"
+              {filteredProducts.length} {filteredProducts.length === 1 ? 'result' : 'results'} for &quot;{searchQuery}&quot;
             </h2>
             
             {filteredProducts.length > 0 ? (

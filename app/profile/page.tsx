@@ -1,7 +1,7 @@
 'use client';
 
-import { User, Mail, Phone, MapPin, Clock, Calendar, Edit, LogOut } from 'lucide-react';
-import React, { useEffect } from 'react';
+import { User, Edit, LogOut } from 'lucide-react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';

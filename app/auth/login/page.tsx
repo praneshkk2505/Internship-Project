@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Lock, Mail, Eye, EyeOff, Loader2, CheckCircle } from 'lucide-react';
+import { Lock, Mail, Eye, EyeOff, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { useAuth } from '../../../contexts/AuthContext';
 import toast from 'react-hot-toast';
@@ -14,8 +14,8 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const [error, setError] = useState('');
 
@@ -44,7 +44,7 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    
+
     // Basic validation
     if (!formData.email || !formData.password) {
       setError('Please fill in all fields');
@@ -76,11 +76,11 @@ export default function LoginPage() {
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center"></div>
       </div>
-      
+
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-pink-300/20 rounded-full -translate-x-1/2 -translate-y-1/2 filter blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-300/20 rounded-full translate-x-1/3 translate-y-1/3 filter blur-3xl"></div>
-      
+
       <div className="w-full max-w-md relative z-10">
         <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/20">
           <div className="text-center mb-8">
