@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import React, { useState, useEffect, useRef } from 'react';
 // import { useAuth } from '../../contexts/AuthContext';
 // import toast from 'react-hot-toast';
