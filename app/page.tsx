@@ -12,30 +12,44 @@ import { motion } from 'framer-motion';
 const allProducts = [
   {
     id: 1,
-    name: 'Crunchy Chips',
+    name: 'Ladoo',
     price: 20,
-    image: '/Images/download.jpeg',
+    image: '/Images/IMG-2050630-WA0002.jpeg',
     category: 'Snacks'
   },
   {
     id: 2,
-    name: 'Chocolate Bar',
+    name: 'Jellabai',
     price: 50,
-    image: '/Images/images.jpeg',
+    image: '/Images/IMG-2050630-WA0003.jpeg',
     category: 'Sweets'
   },
   {
     id: 3,
-    name: 'Cookies Pack',
+    name: 'Halwa',
     price: 40,
-    image: '/Images/download (2).jpeg',
+    image: '/Images/IMG-2050630-WA0004.jpeg',
     category: 'Bakery'
   },
   {
     id: 4,
-    name: 'Nuts Mix',
+    name: 'Mysore pak',
     price: 80,
-    image: '/Images/download (1).jpeg',
+    image: '/Images/IMG-2050630-WA0005.jpeg',
+    category: 'Healthy'
+  },
+  {
+    id: 4,
+    name: 'Mixture',
+    price: 60,
+    image: '/Images/IMG-2050630-WA0006.jpeg',
+    category: 'Healthy'
+  },
+  {
+    id: 4,
+    name: 'Murukku',
+    price: 30,
+    image: '/Images/IMG-2050630-WA0007.jpeg',
     category: 'Healthy'
   }
 ];
