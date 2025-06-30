@@ -12,15 +12,43 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base styles for all devices */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Mobile and Tablet specific styles */
+@media (max-width: 1023px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* Fix for mobile viewport units */
+  @supports (-webkit-touch-callout: none) {
+    body {
+      /* The hack for Safari */
+      height: -webkit-fill-available;
+    }
+  }
+}
+
+/* Mobile only */
+@media (max-width: 767px) {
+  /* Add any mobile-specific styles here */
+}
+
+/* Tablet only */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Add any tablet-specific styles here */
 }

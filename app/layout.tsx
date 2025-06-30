@@ -10,7 +10,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-  userScalable: false,
+  userScalable: true,
   themeColor: '#f59e0b',
 };
 
@@ -48,8 +48,10 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <head>
         <meta name="theme-color" content="#f59e0b" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
       </head>
-      <body className={`${inter.className} min-h-full bg-gray-50 pb-16 md:pb-0`}>
+      <body className={`${inter.className} min-h-screen bg-white`}>
         <Providers>
           <div className="min-h-screen">
             {children}
