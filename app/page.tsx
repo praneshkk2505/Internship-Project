@@ -274,7 +274,7 @@ export default function Home() {
             <h2 className="text-center text-3xl font-bold text-gray-900">Shop by Category</h2>
             {/* <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-pink-500 mt- rounded-full"></div> */}
           </div>
-          <div className=" justify-center flex flex-row space-x-2">
+          <div className=" justify-center flex flex-row space-x-1">
           {categories.map((category) => (
               <button
                 key={category}
