@@ -9,54 +9,67 @@ import { motion } from 'framer-motion';
 
 
 // Move products to a separate file or keep it here
-const allProducts = [
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  categories: string[];
+}
+
+const allProducts: Product[] = [
   {
     id: 1,
     name: 'Ladoo',
     price: 20,
     image: '/Images/IMG-20250630-WA0002.jpg',
-    category: 'Snacks'
+    categories: ['Sweets', 'Diwali Special']
   },
   {
     id: 2,
     name: 'Jellabai',
     price: 50,
     image: '/Images/IMG-20250630-WA0003.jpg',
-    category: 'Sweets'
+    categories: ['Sweets', 'Festive']
   },
   {
     id: 3,
     name: 'Halwa',
     price: 40,
     image: '/Images/IMG-20250630-WA0004.jpg',
-    category: 'Bakery'
+    categories: ['Sweets', 'Dessert']
   },
   {
     id: 4,
     name: 'Mysore pak',
     price: 80,
     image: '/Images/IMG-20250630-WA0005.jpg',
-    category: 'Healthy'
+    categories: ['Sweets', 'Premium']
   },
   {
-    id: 4,
+    id: 5,
     name: 'Mixture',
     price: 60,
     image: '/Images/IMG-20250630-WA0006.jpg',
-    category: 'Healthy'
+    categories: ['Snacks', 'Spicy']
   },
   {
-    id: 4,
+    id: 6,
     name: 'Murukku',
     price: 30,
     image: '/Images/IMG-20250630-WA0007.jpg',
-    category: 'Healthy'
+    categories: ['Snacks', 'Bakery', 'Crunchy']
   }
 ];
 
 // Cart state management
+interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
 const useCart = () => {
-  const [cart, setCart] = useState<Array<{product: typeof allProducts[0], quantity: number}>>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
   const [isClient, setIsClient] = useState(false);
 
   // Load cart from localStorage on client-side
@@ -187,11 +200,12 @@ export default function Home() {
   // Filter products by category
   const filteredProducts = selectedCategory === 'All' 
     ? allProducts 
-    : allProducts.filter(product => product.category === selectedCategory);
+    : allProducts.filter(product => product.categories.includes(selectedCategory));
 
   // Show only 4 featured products initially, or all if showAllProducts is true
   const displayedProducts = showAllProducts ? filteredProducts : filteredProducts.slice(0, 4);
-  const categories = ['All', ...new Set(allProducts.map(p => p.category))];
+  // Get all unique categories from all products
+  const categories = ['All', ...new Set(allProducts.flatMap(p => p.categories))];
 
   const handleShopNow = () => {
     // Scroll to featured products section
@@ -269,34 +283,58 @@ export default function Home() {
 
       {/* Featured Products */}
       <div id="featured-products" className="container mx-auto px-4 py-16">
-        <div className=" flex-col sm:flex-row justify-between items-start sm:items-center mb-10 ">
-          <div>
+        <div className="mb-10">
+          <div className="mb-4">
             <h2 className="text-center text-3xl font-bold text-gray-900">Shop by Category</h2>
-            {/* <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-pink-500 mt- rounded-full"></div> */}
           </div>
-          <div className=" justify-center flex flex-row space-x-1">
-          {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  selectedCategory === category
-                    ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-              {category}
-              </button>
-            ))}
+          <div className="relative">
+            {/* Mobile: Horizontal scroll */}
+            <div className="md:hidden flex overflow-x-auto pb-2 -mx-2 px-2 no-scrollbar">
+              <div className="flex space-x-1">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                      selectedCategory === category
+                        ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
             </div>
+            {/* Desktop: Centered */}
+            <div className="hidden md:flex justify-center">
+              <div className="flex flex-wrap justify-center gap-2 max-w-3xl">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                      selectedCategory === category
+                        ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
           {filteredProducts.length > 4 && (
-            <button 
-              onClick={handleViewAll}
-              className="text-purple-600 hover:text-purple-800 font-medium flex items-center bg-purple-50 px-4 py-2 rounded-lg hover:bg-purple-100 transition-colors"
-            >
-              {showAllProducts ? 'Show Less' : 'View All'}
-              <ChevronRight className={`ml-1 h-4 w-4 transition-transform ${showAllProducts ? 'transform rotate-90' : ''}`} />
-            </button>
+            <div className="flex justify-center mt-4">
+              <button 
+                onClick={handleViewAll}
+                className="text-purple-600 hover:text-purple-800 font-medium flex items-center bg-purple-50 px-4 py-2 rounded-lg hover:bg-purple-100 transition-colors"
+              >
+                {showAllProducts ? 'Show Less' : 'View All'}
+                <ChevronRight className={`ml-1 h-4 w-4 transition-transform ${showAllProducts ? 'transform rotate-90' : ''}`} />
+              </button>
+            </div>
           )}
         </div>
         
@@ -333,7 +371,13 @@ export default function Home() {
                 <div className="flex justify-between items-start mb-2">
                   <div>
                     <h3 className="font-bold text-gray-900 text-lg">{product.name}</h3>
-                    <span className="text-sm text-pink-500 font-medium">{product.category}</span>
+                    <div className="flex flex-wrap gap-1 mt-1">
+                      {product.categories.map((category, idx) => (
+                        <span key={idx} className="text-xs bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full">
+                          {category}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                   <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 text-xl">
                     ${product.price}
