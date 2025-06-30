@@ -162,7 +162,27 @@ export default function Home() {
   const [isHovered, setIsHovered] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [showAllProducts, setShowAllProducts] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
+
+  // Set isMounted to true after component mounts (client-side only)
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Generate consistent positions based on index
+  const getSparklePosition = (index: number) => {
+    // Use a simple hash function to generate consistent but varied positions
+    const positions = [
+      { left: '84%', top: '69%', delay: '0s', duration: '4.15s' },
+      { left: '86%', top: '93%', delay: '0.5s', duration: '4.78s' },
+      { left: '27%', top: '35%', delay: '1s', duration: '4.07s' },
+      { left: '96%', top: '62%', delay: '1.5s', duration: '3.87s' },
+      { left: '40%', top: '12%', delay: '2s', duration: '4.77s' },
+      { left: '74%', top: '14%', delay: '2.5s', duration: '4.71s' }
+    ];
+    return positions[index % positions.length];
+  };
 
   // Filter products by category
   const filteredProducts = selectedCategory === 'All' 
@@ -187,22 +207,27 @@ export default function Home() {
 
   return (
     <>
-      <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute animate-bounce opacity-20"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${i * 0.5}s`,
-              animationDuration: `${3 + Math.random() * 2}s`
-            }}
-          >
-            <Sparkles className="text-amber-400" size={16} />
-          </div>
-        ))}
-      </div>
+      {isMounted && (
+        <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+          {[...Array(6)].map((_, i) => {
+            const { left, top, delay, duration } = getSparklePosition(i);
+            return (
+              <div
+                key={i}
+                className="absolute animate-bounce opacity-20"
+                style={{
+                  left,
+                  top,
+                  animationDelay: delay,
+                  animationDuration: duration
+                }}
+              >
+                <Sparkles className="text-amber-400" size={16} />
+              </div>
+            );
+          })}
+        </div>
+      )}
       <main className="min-h-screen pb-32 bg-gradient-to-b from-purple-50 to-pink-50">
       {/* Hero Section */}
       <div className="relative rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 text-white py-16">
