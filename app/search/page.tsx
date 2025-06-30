@@ -185,7 +185,7 @@ export default function SearchPage() {
             <div className="mt-6">
               <h3 className="text-sm font-medium text-gray-500 mb-2">Try searching for:</h3>
               <div className="flex flex-wrap justify-center gap-2">
-                {['Chips', 'Chocolate', 'Cookies', 'Nuts'].map((term) => (
+                {['Snacks', 'Bakery', 'Crunchy','Spicy','Sweets', 'Premium', 'Dessert', 'Festive'].map((term) => (
                   <button
                     key={term}
                     onClick={() => setSearchQuery(term)}
