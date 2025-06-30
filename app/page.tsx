@@ -380,7 +380,7 @@ export default function Home() {
                     </div>
                   </div>
                   <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 text-xl">
-                    ${product.price}
+                    ₹{product.price}
                   </span>
                 </div>
                 <motion.button 
