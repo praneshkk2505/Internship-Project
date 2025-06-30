@@ -14,42 +14,42 @@ const allProducts = [
     id: 1,
     name: 'Ladoo',
     price: 20,
-    image: '/Images/IMG-2050630-WA0002.jpeg',
+    image: '/Images/IMG-20250630-WA0002.jpg',
     category: 'Snacks'
   },
   {
     id: 2,
     name: 'Jellabai',
     price: 50,
-    image: '/Images/IMG-2050630-WA0003.jpeg',
+    image: '/Images/IMG-20250630-WA0003.jpg',
     category: 'Sweets'
   },
   {
     id: 3,
     name: 'Halwa',
     price: 40,
-    image: '/Images/IMG-2050630-WA0004.jpeg',
+    image: '/Images/IMG-20250630-WA0004.jpg',
     category: 'Bakery'
   },
   {
     id: 4,
     name: 'Mysore pak',
     price: 80,
-    image: '/Images/IMG-2050630-WA0005.jpeg',
+    image: '/Images/IMG-20250630-WA0005.jpg',
     category: 'Healthy'
   },
   {
     id: 4,
     name: 'Mixture',
     price: 60,
-    image: '/Images/IMG-2050630-WA0006.jpeg',
+    image: '/Images/IMG-20250630-WA0006.jpg',
     category: 'Healthy'
   },
   {
     id: 4,
     name: 'Murukku',
     price: 30,
-    image: '/Images/IMG-2050630-WA0007.jpeg',
+    image: '/Images/IMG-20250630-WA0007.jpg',
     category: 'Healthy'
   }
 ];
